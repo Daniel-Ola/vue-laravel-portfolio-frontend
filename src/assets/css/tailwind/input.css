@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .show-box {
+    @apply border-2 border-red-500;
+  }
+
+  .show-box-2 {
+    @apply border-2 border-blue-500;
+  }
+
+  .border-no-right {
+    @apply border-4 border-r-0 rounded-l-full border-[#303C4C] px-7
+  }
+
+}
+
+@layer components {
+  .btn {
+    @apply capitalize px-3 py-2;
+  }
+
+  .btn-primary {
+    @apply text-white border-2 border-gray-400 bg-transparent rounded-md border-[#303C4C];
+  }
+}
+
+@layer base {
+  @font-face {
+    font-family: Roboto;
+    src: url("@/assets/fonts/Roboto/Roboto-Regular.ttf") format("truetype");
+  }
+
+  @font-face {
+    font-family: "Roboto Mono";
+    src: url("@/assets/fonts/Roboto_Mono/RobotoMono-VariableFont_wght.ttf") format("truetype");
+  }
+}
