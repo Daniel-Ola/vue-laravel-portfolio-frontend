@@ -64,19 +64,15 @@ export default {
         },
         {
           title: "Resume",
-          url: "about",
+          url: "resume",
         },
         {
           title: "Study Case",
-          url: "personal.info",
+          url: "about.personal_info",
         },
         {
           title: "Portfolio",
           url: "resume",
-        },
-        {
-          title: "Portfolio 2",
-          url: "resume.info",
         },
       ],
     };
@@ -84,7 +80,7 @@ export default {
   methods: {
     checkActiveRoute(routeName) {
       return this.$route.name === routeName
-        ? "md:btn-primary text-white"
+        ? ""
         : "text-[#42B983]";
     },
   },

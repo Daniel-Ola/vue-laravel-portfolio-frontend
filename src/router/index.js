@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 // import HomeView from "../views/HomeView.vue";
+import AboutView from "@/views/AboutView";
 
 const routes = [
   {
@@ -10,18 +11,41 @@ const routes = [
   {
     path: "/about",
     name: "about",
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
+    component: AboutView,
+    meta: {
+      next: "about.bio",
+      title: "About Me",
+    },
     children: [
       {
-        path: "personal-information",
-        name: "personal.info",
-        component: () => import("../views/AboutView.vue"),
+        path: "bio",
+        name: "about.bio",
+        component: AboutView,
+        meta: {
+          next: "about.personal_info",
+          prev: "about",
+          title: "Get personal with me",
+        },
       },
       {
-        path: "motivation",
-        name: "personal.motivation",
-        component: () => import("../views/AboutView.vue"),
+        path: "personal-information",
+        name: "about.personal_info",
+        component: AboutView,
+        meta: {
+          next: "about.education",
+          prev: "about.bio",
+          title: "A little bio",
+        },
+      },
+      {
+        path: "education/:offset?",
+        name: "about.education",
+        component: AboutView,
+        meta: {
+          next: "",
+          prev: "about.personal_info",
+          title: "Best Legacy",
+        },
       },
     ],
   },
@@ -53,7 +77,7 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
-  linkActiveClass: "",
+  linkActiveClass: "md:btn-primary text-white",
   linkExactActiveClass: "",
 });
 
@@ -74,4 +98,12 @@ export default router;
 //         component: () => import("../views/AboutView.vue"),
 //       },
 //     ],
+//   },
+
+
+
+//{
+//     path: '/:catchAll(.*)*',
+//     name: "PageNotFound",
+//     component: PageNotFound,
 //   },

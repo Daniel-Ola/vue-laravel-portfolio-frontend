@@ -1,7 +1,6 @@
 <template>
   <div class="bg-app-blue h-screen overflow-hidden">
     <app-navigation />
-    <!--    <router-view />-->
     <router-view v-slot="{ Component }">
       <XyzTransition
         appear
@@ -25,10 +24,13 @@ export default {
     AppNavigation,
     AppBottomNavigation,
   },
-  mounted() {
-    console.clear();
-    console.log(router);
-    console.log(router.currentRoute.value.matched);
+  watch: {
+    $route: {
+      immediate: true,
+      handler(to, from) {
+        document.title = to.meta.title || "Welcome to my portfolio";
+      },
+    },
   },
 };
 </script>
